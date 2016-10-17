@@ -29,7 +29,7 @@ DESCRIPTION
 
   this becomes espcially important for libraries which spawn processes, such
   as via `IO.popen` that need to ensure those children are cleaned up, but
-  which cannot control whether client code may call `exit`.  this approach
+  which cannot control whether client code may call `exit!`.  this approach
   also handles being `kill -9`d - something no `at_exit{}` handler can
   promise.
 
