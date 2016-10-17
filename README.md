@@ -8,9 +8,11 @@ SYNOPSIS
 
 USAGE
 -----
-  pipe = IO.popen 'program-that-must-not-be-zombied'
+```ruby
+  pipe = IO.popen 'some-program-that-must-not-be-zombied'
 
   Assassin.at_exit_kill(pipe.pid)
+```
 
   also see lib/assassin.rb and test/assassin_test.rb
 
