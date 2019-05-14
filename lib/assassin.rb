@@ -2,7 +2,7 @@ require 'tmpdir'
 require 'securerandom'
 
 class Assassin
-  Version = '0.4.2' unless defined?(Version)
+  Version = '1.4.2' unless defined?(Version)
 
   def Assassin.version
     Version
@@ -46,6 +46,7 @@ class Assassin
 
   def Assassin.script_for(child_pid, options = {})
     parent_pid = Process.pid
+    delay = (options[:delay] || 0.42).to_f
 
     script = <<-__
       Process.daemon
@@ -55,6 +56,7 @@ class Assassin
 
       parent_pid = #{ parent_pid }
       child_pid = #{ child_pid }
+      delay = #{ delay }
 
       m = 24*60*60
       n = 42
@@ -63,6 +65,8 @@ class Assassin
         begin
           Process.kill(0, parent_pid)
         rescue Object => e
+          sleep(delay)
+
           if e.is_a?(Errno::ESRCH)
             n.times do
               begin

@@ -3,11 +3,11 @@
 
 Gem::Specification::new do |spec|
   spec.name = "assassin"
-  spec.version = "0.4.2"
+  spec.version = "1.4.2"
   spec.platform = Gem::Platform::RUBY
   spec.summary = "assassin"
   spec.description = "no zombies ever, not even on `exit!` or `kill -9`"
-  spec.license = "same as ruby's"
+  spec.license = "Ruby"
 
   spec.files =
 ["LICENSE",
